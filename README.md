@@ -36,3 +36,16 @@
     - 'final class' -> cannot be inherited from
 
 ## Polymorphism
+In this chapter, you’ll learn about polymorphism (also called dynamic binding or late
+binding or run-time binding) starting from the basics, with simple examples that strip away
+everything but the polymorphic behavior of the program.
+
+Wouldn’t it be much nicer if you could just write a single method that takes the base class as
+its argument, and not any of the specific derived classes? That is, wouldn’t it be nice if you
+could forget that there are derived classes, and write your code to talk only to the base class?
+ `see Upcaster class -> example ` 
+
+- In a wel designed  OOP program you communicate only with the base class interface. When you add data types that inherit from the base class, the right method calls will be made during runtime without you having to change the base class.
+- @Override is optional but handy because:
+  - It provides compile-time checks: The @Override annotation informs the compiler that you intend to override a method from a superclass or implement an interface method. If, for some reason, the annotated method does not actually override a superclass method or implement an interface method, the compiler will generate an error, allowing you to catch such mistakes early during compilation.
+  -  By using the @Override annotation, you make it clear to other developers that the annotated method is intended to override a superclass method or implement an interface method.
