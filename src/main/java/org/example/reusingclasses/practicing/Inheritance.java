@@ -2,6 +2,8 @@ package org.example.reusingclasses.practicing;
 
 
 class Base{
+
+    public final String string = "test";
     void doSomething()
     {
         System.out.println("doing stuff");

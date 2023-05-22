@@ -19,6 +19,9 @@
   passed to catch
 - `protected` keyword ->
 - `final`
+    - final object 
+      - reference is final but the state of the object itself can be changed
+    - to field you can via getters and setters
     - Compile time constant -> folding
       - `final int MY_CONSTANT = 10;
         int result = 5 * MY_CONSTANT;`
@@ -31,4 +34,5 @@
     - blank final must be initialized before being accessed
       - advantage -> final field inside a class can be different for each object
     - 'final class' -> cannot be inherited from
-    - 
+
+## Polymorphism
