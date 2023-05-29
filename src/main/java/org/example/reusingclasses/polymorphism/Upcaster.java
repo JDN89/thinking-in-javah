@@ -10,13 +10,15 @@ public class Upcaster {
         Guitar guitar = new Guitar();
         Music.tune(guitar);
 
+        Instrument instrument = new Guitar(); //upcasting
+        instrument.play("override"); // calling overriden method
     }
 }
 
 class Instrument {
 
-    public void play(char c) {
-        System.out.println("chord" + c);
+    public void play(String s) {
+        System.out.println("chord" + s);
     }
 
     @Override
@@ -29,10 +31,16 @@ class Guitar extends Instrument {
     public void play(String s) {
         System.out.println("playing song" + s);
     }
+
+    @Override
+    public String toString() {
+        return "Guitar{}";
+    }
 }
 
 class Music {
     static void tune(Instrument i) {
         System.out.println("tuning "  + i);
     }
+
 }

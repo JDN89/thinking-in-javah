@@ -8,13 +8,13 @@
 - public and protected: if the fields in the base class are public or protected, you can access them in the derived class.
 - private: you can only access then in the derived class through getter and setter methods.
 
-- you can override a method from the super class and still call the super class method from withing the overrinden
+- you can override a method from the super class and still call the super class method from withing the overridden
   method via super. keyword.
   `super is added because otherwise you would have recursive calls: page 169`
 - When the base class has ctor has arguments you must call the ctor from the base class,form withing the child class,
   via the super keyword using the appropriate arguments.
 - You are forced to initialize the ctor of the base class, but you're responsible for the initialization of the member
-  objects/ `fields`, when you're not passed as parameters to the ctor
+  objects/ `fields`, when they're not passed as parameters to the ctor
 - cleanup with try-with resource AutoClosable -> close gets automatically called at end of try block -> exceptions
   passed to catch
 - `protected` keyword ->
@@ -49,3 +49,6 @@ could forget that there are derived classes, and write your code to talk only to
 - @Override is optional but handy because:
   - It provides compile-time checks: The @Override annotation informs the compiler that you intend to override a method from a superclass or implement an interface method. If, for some reason, the annotated method does not actually override a superclass method or implement an interface method, the compiler will generate an error, allowing you to catch such mistakes early during compilation.
   -  By using the @Override annotation, you make it clear to other developers that the annotated method is intended to override a superclass method or implement an interface method.
+- You can't access the private method of base class.
+  - use different name from private methods in base class, so you don't get the appearance that the method can be overridden
+- Polymorphism relies on dynamic binding, which occurs at runtime, based on the actual type of the object. Static methods, on the other hand, are resolved at compile time based on the type of the variable or reference on which they are called.
