@@ -52,3 +52,14 @@ could forget that there are derived classes, and write your code to talk only to
 - You can't access the private method of base class.
   - use different name from private methods in base class, so you don't get the appearance that the method can be overridden
 - Polymorphism relies on dynamic binding, which occurs at runtime, based on the actual type of the object. Static methods, on the other hand, are resolved at compile time based on the type of the variable or reference on which they are called.
+- Initilize all member objects (Composition) at their point of definition -> ensure that all objects are constructed properly
+  - all the base-class ctor has the proper knowledge to initialize its own elements -> super. in ctor (inheritance), initialize member object(composition)
+  - order of initialization (see ctor and poly class for example): 
+    - The storage allocated for the object is initialized to binary zero before anything else
+      happens.
+    - The base-class constructors are called
+    - Member initializers are called in the order of declaration. (composition)
+    - The body of the derived-class constructor is called
+- `upcasting`: when you upcast you can't access the new defined methods (not overridden) in the subclass
+  - in order to access the methods in the subclass -> you need to rediscover the exact type of the object -> downCasting
+    - example: DownAndUpcasting
