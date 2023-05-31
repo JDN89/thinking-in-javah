@@ -63,3 +63,7 @@ could forget that there are derived classes, and write your code to talk only to
 - `upcasting`: when you upcast you can't access the new defined methods (not overridden) in the subclass
   - in order to access the methods in the subclass -> you need to rediscover the exact type of the object -> downCasting
     - example: DownAndUpcasting
+
+## Interfaces
+- You can't instantiate an abstract class, you can only inherit from an abstract class
+- when you inherit from an abstract class you must instantiate all it's methods
