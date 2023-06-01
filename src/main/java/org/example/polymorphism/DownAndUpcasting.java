@@ -7,32 +7,71 @@ package org.example.polymorphism;
 // in order to access them, you must downcast
 public class DownAndUpcasting {
     public static void main(String[] args) {
-       Animal animal = new Dog();
-       animal.makeSound();
-//       animal.fetch(); -> can't access the fetch method => downcast
-//         animal = (Dog) animal;
-//        ((Dog) animal).fetch();
+        //upcasting
+        Animal[] animalz = new Animal[2];
+        animalz[0] = new Dog();
+        animalz[1] = new Cat();
+        for(Animal an: animalz) {
+            an.sound();
+            if (an instanceof Dog) {
+                ((Dog) an).fetch();
+            }
+            //downCasting
+            if (an instanceof Cat) {
+                Cat cat = (Cat) an;
+                ((Cat) an).scratch();
+            }
+        }
 
-        // Downcasting (explicit casting) allows access to derived class-specific methods
-         Dog dog = (Dog) animal;
-         dog.fetch();
+        Animal[] animals = new Animal[2];
+        animals[0] = new Dog();
+        animals[1] = new Cat();
 
+        for (Animal animal : animals) {
+            animal.sound(); // Polymorphic behavior based on actual object type
+
+            // animal.fetch(); // Compilation error - Animal reference doesn't have fetch() method
+
+            if (animal instanceof Dog) {
+                Dog dog = (Dog) animal;
+                dog.fetch(); // Accessing specific behavior of Dog
+            } else if (animal instanceof Cat) {
+                Cat cat = (Cat) animal;
+                cat.scratch(); // Accessing specific behavior of Cat
+            }
+        }
     }
 }
+//    Using upcasting, we assign a Dog object and a Cat object to the array elements. During the iteration over the array, the sound() method is invoked on each Animal object. Here, polymorphism comes into play, as the actual implementation of sound() in each subclass (Dog and Cat) is dynamically called based on the object type.
+//
+//        However, since the array is of type Animal, we cannot directly access the fetch() method on the Animal reference. To access the specific behavior of Dog or Cat, we utilize the instanceof operator to check the object type. If the object is of type Dog, we perform a downcast to Dog and invoke the fetch() method. Similarly, if the object is of type Cat, we downcast to Cat and invoke the scratch() method.
+//
+//        This example demonstrates how upcasting in combination with instanceof and downcasting allows you to work with different subclasses within an array of the superclass type, enabling polymorphic behavior and selective access to specific behaviors of the subclasses.
 
 class Animal {
-    public void makeSound() {
+    public void sound() {
         System.out.println("Animal makes a sound");
     }
 }
 
 class Dog extends Animal {
     @Override
-    public void makeSound() {
+    public void sound() {
         System.out.println("Dog barks");
     }
 
     public void fetch() {
         System.out.println("Dog fetches a ball");
+    }
+}
+
+class Cat extends Animal {
+    @Override
+    public void sound() {
+        System.out.println("Cat meows");
+    }
+
+    public void scratch() {
+        System.out.println("Cat scratches");
     }
 }

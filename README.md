@@ -5,32 +5,19 @@
 - adding Main to a class allows easy testing!
 - toString allows easy testing -> String representation of an objects state;
 
-- public and protected: if the fields in the base class are public or protected, you can access them in the derived class.
-- private: you can only access then in the derived class through getter and setter methods.
+- `public` and `protected`: if the fields in the base class are public or protected, you can access them in the derived class.
+- `private`: you can only access then in the derived class through getter and setter methods.
 
-- you can override a method from the super class and still call the super class method from withing the overridden
-  method via super. keyword.
+- you can override a method from the super class and still call the super class method from within the overridden
+  method via `super` keyword.
   `super is added because otherwise you would have recursive calls: page 169`
-- When the base class has ctor has arguments you must call the ctor from the base class,form withing the child class,
-  via the super keyword using the appropriate arguments.
+- When the base class constructor (also known as the superclass constructor) has arguments, you need to pass those arguments to the constructor of the derived class (also known as the subclass) using the "super" keyword. This ensures that the base class constructor is properly invoked during the initialization of the derived class.
 - You are forced to initialize the ctor of the base class, but you're responsible for the initialization of the member
   objects/ `fields`, when they're not passed as parameters to the ctor
 - cleanup with try-with resource AutoClosable -> close gets automatically called at end of try block -> exceptions
   passed to catch
 - `protected` keyword ->
-- `final`
-    - final object 
-      - reference is final but the state of the object itself can be changed
-    - to field you can via getters and setters
-    - Compile time constant -> folding
-      - `final int MY_CONSTANT = 10;
-        int result = 5 * MY_CONSTANT;`
-      - In this case, MY_CONSTANT is a compile-time constant. During compilation, the compiler can fold the constant value 10 into the expression 5 * MY_CONSTANT and replace it with 5 * 10, resulting in 50. As a result, at runtime, the calculation 5 * 10 doesn't need to be performed since the value is already known.
-
-    - Value initialized at `runtime` that you don't want to change - `final`
-      - static final variable is assigned a value determined at runtime (e.g., through computation or method invocation), it is not considered a compile-time constant. The value is still constant once assigned, but it is determined and assigned during runtime. 
-      - more flexibility
-    - `static final` -> associated with a class
+-  `static final` fields are shared across all instances of a class and have the same value, while `final` fields are specific to each instance and can have different values.
     - blank final must be initialized before being accessed
       - advantage -> final field inside a class can be different for each object
     - 'final class' -> cannot be inherited from
@@ -61,7 +48,7 @@ could forget that there are derived classes, and write your code to talk only to
     - Member initializers are called in the order of declaration. (composition)
     - The body of the derived-class constructor is called
 - `upcasting`: when you upcast you can't access the new defined methods (not overridden) in the subclass
-  - in order to access the methods in the subclass -> you need to rediscover the exact type of the object -> downCasting
+  - in order to access the methods in the subclass -> you need to rediscover the exact type of the object -> downCasting via casting or isntance of
     - example: DownAndUpcasting
 
 ## Interfaces
