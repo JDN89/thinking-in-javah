@@ -52,5 +52,27 @@ could forget that there are derived classes, and write your code to talk only to
     - example: DownAndUpcasting
 
 ## Interfaces
+
+#### Abstract
 - You can't instantiate an abstract class, you can only inherit from an abstract class
-- when you inherit from an abstract class you must instantiate all it's methods
+- when you inherit from an abstract class you must instantiate all it's abstract methods
+- you can call public (non-abstract methods), that are defined in the abstract class, from the subclass
+- `final methods` in an abstract class:
+  - Providing a fixed implementation
+  - Ensuring consistency:guarantees that the method will always behave in the same way
+  - Preventing accidental overrides:
+- `Template pattern` > temptation exmaple
+- Reason for a ctor in abstract classes:
+  - Initializing instance variables: A constructor is used to initialize the state of an object - to initialize the shared state
+  - Enforcing initialization requirements: setting mandatory parameters or performing specific checks or validations during object creation.
+  - Providing common setup logic
+  - Interacting with abstract methods:
+
+#### Interfaces
+- can contain fields but they are static and final
+- methods without bodies
+- obligated to instantiate all the methods
+- By using interface inheritance, you can add new method declarations to an interface and combine multiple interfaces into a new interface. This allows you to define more specialized interfaces that inherit and extend the behavior of existing interfaces. It promotes code reuse, modularity, and flexibility in designing your software components.
+  - Multi inheritance chapter had some weird examples where you use Interface as an argument and the right method gets called
+  - I added a less confusing example because I don't think that the example in the book gets used in real life? ask PF
+  - `pg 230, ...`
