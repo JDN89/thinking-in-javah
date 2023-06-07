@@ -76,3 +76,8 @@ could forget that there are derived classes, and write your code to talk only to
   - Multi inheritance chapter had some weird examples where you use Interface as an argument and the right method gets called
   - I added a less confusing example because I don't think that the example in the book gets used in real life? ask PF
   - `pg 230, ...`
+- example of StrategyPattern
+  - common methods applied implemented by different strategies
+  - Concrete classes that implement the strategy interface
+  - Context: class that contains a reference to the current strategy object -> set strategy
+  - Used to be a handy way to define Constant static fields but nowadays, we use Enums (remind in case you see in code base)
