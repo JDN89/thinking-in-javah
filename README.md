@@ -81,3 +81,6 @@ could forget that there are derived classes, and write your code to talk only to
   - Concrete classes that implement the strategy interface
   - Context: class that contains a reference to the current strategy object -> set strategy
   - Used to be a handy way to define Constant static fields but nowadays, we use Enums (remind in case you see in code base)
+###### DEFAULT METHODS EN RELATIES TSS INTERFACES EN LAMBADAS (FUNCTIONAL INTERFACES) -> ONDERZOEK EN GEEF VOORBEELD
+
+#### Inner classesj
