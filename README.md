@@ -83,4 +83,18 @@ could forget that there are derived classes, and write your code to talk only to
   - Used to be a handy way to define Constant static fields but nowadays, we use Enums (remind in case you see in code base)
 ###### DEFAULT METHODS EN RELATIES TSS INTERFACES EN LAMBADAS (FUNCTIONAL INTERFACES) -> ONDERZOEK EN GEEF VOORBEELD
 
-#### Inner classesj
+Accepting interfaces as arguments is a common use case in Java programming and is often used to achieve flexibility and extensibility in code. Here are a few scenarios where accepting interfaces as arguments can be beneficial:
+
+    Callback mechanisms: When implementing callback mechanisms, interfaces can be used to define the contract for callback methods. By accepting an interface as an argument, you allow the caller to pass an object that implements the interface and provides the desired behavior. This allows for loose coupling and dynamic behavior.
+
+    Dependency injection: In the context of dependency injection, interfaces are commonly used to define the dependencies of a class. By accepting an interface as an argument, you allow the caller or an external dependency injection framework to provide an implementation of that interface. This promotes decoupling and allows for easier testing and swapping of implementations.
+
+    Strategy pattern: The strategy pattern involves encapsulating different algorithms or strategies behind a common interface. By accepting an interface representing the strategy as an argument, you can dynamically change the behavior of a method or class by providing different implementations of the interface. This allows for flexible and interchangeable algorithms.
+
+    Event handling: When dealing with events and event listeners, interfaces are often used to define the contract for event handling methods. By accepting an interface representing an event listener as an argument, you can register listeners that implement the interface to handle specific events. This enables modular and customizable event handling.
+
+    Polymorphism and abstraction: Accepting interfaces as arguments promotes polymorphism and abstraction in your code. By relying on interfaces rather than concrete implementations, you allow for a wider range of objects to be passed as arguments, as long as they conform to the interface contract. This enhances code reusability and maintainability.
+
+#### Inner classes
+- The inner class can access both the instance variables and the methods of the enclosing class as if they were its own. This includes private members of the enclosing class, which are normally not accessible to other classes. 
+- 
