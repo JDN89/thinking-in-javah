@@ -1,5 +1,6 @@
 # Thinking in Java - Bruce Eckel
 
+
 ## Reusing Classes
 
 - adding Main to a class allows easy testing!
