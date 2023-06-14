@@ -119,7 +119,7 @@ extensibility in code. Here are a few scenarios where accepting interfaces as ar
     Strategy pattern: The strategy pattern involves encapsulating different algorithms or strategies behind a common interface. By accepting an interface representing the strategy as an argument, you can dynamically change the behavior of a method or class by providing different implementations of the interface. This allows for flexible and interchangeable algorithms.
 
     Event handling: When dealing with events and event listeners, interfaces are often used to define the contract for event handling methods. By accepting an interface representing an event listener as an argument, you can register listeners that implement the interface to handle specific events. This enables modular and customizable event handling.
-
+ 
     Polymorphism and abstraction: Accepting interfaces as arguments promotes polymorphism and abstraction in your code. By relying on interfaces rather than concrete implementations, you allow for a wider range of objects to be passed as arguments, as long as they conform to the interface contract. This enhances code reusability and maintainability.
 
 #### Inner classes
@@ -138,3 +138,7 @@ extensibility in code. Here are a few scenarios where accepting interfaces as ar
     5. An anonymous class that performs field initialization
     6. An anonymous class that performs construction using instance initialization
        (anonymous inner classes cannot have constructors)
+- Nested class: when you don't need a connection between the inner and outer class
+  - You don’t need an outer-class object in order to create an object of a nested class.
+  - You can’t access a non-static outer-class object from an object of a nested class.
+  - A nested class inside an interface is automatically public and static
