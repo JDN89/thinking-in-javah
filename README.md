@@ -148,3 +148,6 @@ extensibility in code. Here are a few scenarios where accepting interfaces as ar
 - holding your objects or holding references to your objects via:  arrays, ArrayList, LinkedList, and HashMap.
 - With `Generics` you’re prevented, at compile time, from putting the
   wrong type of object into a container.
+- Set never has duplicates
+- Collection vs List interface:
+  - List adds unique index (access elements by their index), allows duplicate values and has ordering, Collections had random ordering.
