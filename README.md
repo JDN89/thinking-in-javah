@@ -142,3 +142,9 @@ extensibility in code. Here are a few scenarios where accepting interfaces as ar
   - You don’t need an outer-class object in order to create an object of a nested class.
   - You can’t access a non-static outer-class object from an object of a nested class.
   - A nested class inside an interface is automatically public and static
+
+#### Holding your objects
+
+- holding your objects or holding references to your objects via:  arrays, ArrayList, LinkedList, and HashMap.
+- With `Generics` you’re prevented, at compile time, from putting the
+  wrong type of object into a container.
