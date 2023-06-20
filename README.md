@@ -151,3 +151,67 @@ extensibility in code. Here are a few scenarios where accepting interfaces as ar
 - Set never has duplicates
 - Collection vs List interface:
   - List adds unique index (access elements by their index), allows duplicate values and has ordering, Collections had random ordering.
+- You’ll typically make an object of a concrete class, upcast it to the corresponding
+  interface, and then use the interface throughout the rest of your code. `List<Apple> apples = new LinkedList<Apple>();`
+
+
+## Overview Most used Collections and Maps:
+    ArrayList:
+        ArrayList is an implementation of the List interface, backed by a dynamic array.
+        Elements in an ArrayList are stored in contiguous memory locations.
+        Provides fast access to elements by index.
+        Insertion and deletion operations at the end of the list are efficient.
+        Insertion and deletion operations at the beginning or middle of the list are slower because existing elements may need to be shifted.
+        Allows duplicate elements and maintains the insertion order.
+        Suitable for scenarios where random access and fast iteration are required.
+
+    LinkedList:
+        LinkedList is an implementation of the List interface, backed by a doubly-linked list.
+        Elements in a LinkedList are stored in separate nodes, each containing a reference to the previous and next node.
+        Provides fast insertion and deletion operations at any position in the list.
+        Random access to elements by index is slower compared to ArrayList.
+        Allows duplicate elements and maintains the insertion order.
+        Suitable for scenarios that involve frequent insertion and deletion operations in the middle of the list.
+
+    HashSet:
+        HashSet is an implementation of the Set interface, backed by a hash table (using HashMap internally).
+        Stores elements in no particular order.
+        Provides fast insertion, deletion, and retrieval operations.
+        Does not allow duplicate elements (based on the elements' hashCode and equals methods).
+        Does not maintain the insertion order of elements.
+        Suitable for scenarios that require uniqueness of elements and efficient retrieval.
+
+    TreeSet:
+        TreeSet is an implementation of the SortedSet interface, backed by a self-balancing binary search tree (Red-Black Tree).
+        Stores elements in sorted order.
+        Provides fast insertion, deletion, and retrieval operations.
+        Does not allow duplicate elements (based on the elements' compareTo or Comparator implementation).
+        Suitable for scenarios that require sorted elements and efficient operations for maintaining sorted order.
+
+    LinkedHashSet:
+        LinkedHashSet is an implementation of the Set interface, backed by a hash table with a linked list (using LinkedHashMap internally).
+        Maintains the insertion order of elements while also providing fast access and removal.
+        Provides fast insertion, deletion, and retrieval operations.
+        Does not allow duplicate elements (based on the elements' hashCode and equals methods).
+        Suitable for scenarios that require both uniqueness of elements and maintenance of insertion order.
+
+    HashMap:
+        HashMap is an implementation of the Map interface, backed by a hash table.
+        Stores key-value pairs in no particular order.
+        Provides fast insertion, deletion, and retrieval operations.
+        Allows duplicate values but not duplicate keys (based on the keys' hashCode and equals methods).
+        Suitable for scenarios that require efficient key-value lookups.
+
+    TreeMap:
+        TreeMap is an implementation of the SortedMap interface, backed by a self-balancing binary search tree (Red-Black Tree).
+        Stores key-value pairs in sorted order of keys.
+        Provides fast insertion, deletion, and retrieval operations based on keys.
+        Does not allow duplicate keys (based on the keys' compareTo or Comparator implementation).
+        Suitable for scenarios that require key-value pairs to be maintained in sorted order.
+
+    LinkedHashMap:
+        LinkedHashMap is an implementation of the Map interface, backed by a hash table with a linked list.
+        Maintains the insertion order of key-value pairs while also providing fast access and removal.
+        Provides fast insertion, deletion, and retrieval operations.
+        Allows duplicate values but not duplicate keys (based on the keys' hashCode and equals methods).
+        Suitable for scenarios that require both key-value lookups and maintenance of insertion order
