@@ -153,6 +153,16 @@ extensibility in code. Here are a few scenarios where accepting interfaces as ar
   - List adds unique index (access elements by their index), allows duplicate values and has ordering, Collections had random ordering.
 - You’ll typically make an object of a concrete class, upcast it to the corresponding
   interface, and then use the interface throughout the rest of your code. `List<Apple> apples = new LinkedList<Apple>();`
+- Lists
+  - contains : in a list
+  - indexof : discover index of element
+  - inserting in the middle of a list is cheap operation for LinkedList but expensive for ArrayList
+  - access is slower for a LinkedList
+  - LinkedList also adds methods that allow it to be used as a `stack`, a `Queue` or a `double-
+    ended queue` (deque).
+- Iterator
+  - example itterating class
+- `Stack` LIFO
 
 
 ## Overview Most used Collections and Maps:
