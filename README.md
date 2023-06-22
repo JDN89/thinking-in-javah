@@ -1,6 +1,5 @@
 # Thinking in Java - Bruce Eckel
 
-
 ## Reusing Classes
 
 - adding Main to a class allows easy testing!
@@ -139,9 +138,9 @@ extensibility in code. Here are a few scenarios where accepting interfaces as ar
     6. An anonymous class that performs construction using instance initialization
        (anonymous inner classes cannot have constructors)
 - Nested class: when you don't need a connection between the inner and outer class
-  - You don’t need an outer-class object in order to create an object of a nested class.
-  - You can’t access a non-static outer-class object from an object of a nested class.
-  - A nested class inside an interface is automatically public and static
+    - You don’t need an outer-class object in order to create an object of a nested class.
+    - You can’t access a non-static outer-class object from an object of a nested class.
+    - A nested class inside an interface is automatically public and static
 
 #### Holding your objects
 
@@ -150,22 +149,30 @@ extensibility in code. Here are a few scenarios where accepting interfaces as ar
   wrong type of object into a container.
 - Set never has duplicates
 - Collection vs List interface:
-  - List adds unique index (access elements by their index), allows duplicate values and has ordering, Collections had random ordering.
+    - List adds unique index (access elements by their index), allows duplicate values and has ordering, Collections had
+      random ordering.
 - You’ll typically make an object of a concrete class, upcast it to the corresponding
-  interface, and then use the interface throughout the rest of your code. `List<Apple> apples = new LinkedList<Apple>();`
+  interface, and then use the interface throughout the rest of your
+  code. `List<Apple> apples = new LinkedList<Apple>();`
 - Lists
-  - contains : in a list
-  - indexof : discover index of element
-  - inserting in the middle of a list is cheap operation for LinkedList but expensive for ArrayList
-  - access is slower for a LinkedList
-  - LinkedList also adds methods that allow it to be used as a `stack`, a `Queue` or a `double-
-    ended queue` (deque).
+    - contains : in a list
+    - indexof : discover index of element
+    - inserting in the middle of a list is cheap operation for LinkedList but expensive for ArrayList
+    - access is slower for a LinkedList
+    - LinkedList also adds methods that allow it to be used as a `stack`, a `Queue` or a `double-
+      ended queue` (deque).
 - Iterator
-  - example itterating class
+    - example itterating class
 - `Stack` LIFO
-
+- `Queue` FIFO
+  - see Queuy for queue specific methods
+  - queues are extremely important in concurrent programming for safely transferring objects between tasks or threads. When multiple threads are involved, ensuring that data is transferred and processed safely is crucial to avoid issues such as data corruption, race conditions, or inconsistent states. Queues, particularly thread-safe queues, serve as the foundation for achieving this.
+- `Map` has key value pairs
+    - Stores key-value pairs in no particular order.
+    - Provides fast insertion, deletion, and retrieval operations.
 
 ## Overview Most used Collections and Maps:
+
     ArrayList:
         ArrayList is an implementation of the List interface, backed by a dynamic array.
         Elements in an ArrayList are stored in contiguous memory locations.
@@ -225,3 +232,16 @@ extensibility in code. Here are a few scenarios where accepting interfaces as ar
         Provides fast insertion, deletion, and retrieval operations.
         Allows duplicate values but not duplicate keys (based on the keys' hashCode and equals methods).
         Suitable for scenarios that require both key-value lookups and maintenance of insertion order
+
+## EXTRA info about how queues facilitate safe object transfer in concurrent environments:
+Here's a breakdown of how queues facilitate safe object transfer in concurrent environments:
+
+    - `Producer-Consumer Pattern`: One of the most common use cases for queues in concurrent programming is the Producer-Consumer pattern. Producers are tasks that generate data or results, and consumers are tasks that process this data. A queue serves as the buffer for holding this data in between. The producer adds elements to the queue, and the consumer takes elements from the queue for processing.
+
+    `Decoupling of Components`: Queues decouple the producing and consuming components. This means that the producer doesn’t need to wait for the consumer to be ready. Similarly, the consumer doesn't need to wait for the producer to produce data. The queue acts as a buffer that can store data until the consumer is ready to process it.
+
+    `Thread Safety`: In Java, you can use thread-safe queue implementations, such as BlockingQueue, LinkedBlockingQueue, or ArrayBlockingQueue. These implementations ensure that the operations of adding and removing elements from the queue are atomic and thread-safe. This eliminates race conditions and ensures that data integrity is maintained.
+
+    `Flow Control`: Queues can help in controlling the flow of data between threads. For instance, if the producer is generating data faster than the consumer can process, the queue will start to fill up. You can set a maximum size for the queue, and once it's full, the producer will be forced to wait. This can help in preventing resource exhaustion and ensuring a balanced workload.
+
+    `Ordering`: In some cases, the order of processing matters. Queues inherently maintain the order of elements as they are added and removed, ensuring that elements are processed in the order they were added (FIFO - First In First Out).
