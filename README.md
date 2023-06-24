@@ -170,6 +170,23 @@ extensibility in code. Here are a few scenarios where accepting interfaces as ar
 - `Map` has key value pairs
     - Stores key-value pairs in no particular order.
     - Provides fast insertion, deletion, and retrieval operations.
+    - Does not implement Iterable, but you can itterate over the keyset and vlues
+- The use of Collection Interface to write generic and reusalbe code -> see CollectionsVsInterfaces
+  - Both Collection and Iterator offer flexibility with various container types.
+  - `Collection` is slightly preferred for cleaner code via enhanced for-loops.
+  - Decoupling through interfaces promotes maintainability and reusability.
+  - Using the Collection interface allows you to write more generic code, as you can pass around collections without knowing their specific implementation. This is a form of polymorphism and is beneficial for writing flexible and extensible code.
+- `Array` doesn't implement Iterable interface -> need to convert to List (or something els)
+  - An array associates numerical indexes to objects. It holds objects of a known type so
+    that you don’t have to cast the result when you’re looking up an object. It can be
+    multidimensional, and it can hold primitives. However, its size cannot be changed
+    once you create it.
+- A container won’t hold primitives, but autoboxing takes
+  care of translating primitives back and forth to the wrapper types held in the
+  container.
+- Use an ArrayList if you’re doing a lot of random accesses, but a LinkedList if you
+  will be doing a lot of insertions and removals in the middle of the list.
+- The behavior of `Queues` and `stacks` is provided via the LinkedList.
 
 ## Overview Most used Collections and Maps:
 
