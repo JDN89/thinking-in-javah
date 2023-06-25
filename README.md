@@ -165,28 +165,73 @@ extensibility in code. Here are a few scenarios where accepting interfaces as ar
     - example itterating class
 - `Stack` LIFO
 - `Queue` FIFO
-  - see Queuy for queue specific methods
-  - queues are extremely important in concurrent programming for safely transferring objects between tasks or threads. When multiple threads are involved, ensuring that data is transferred and processed safely is crucial to avoid issues such as data corruption, race conditions, or inconsistent states. Queues, particularly thread-safe queues, serve as the foundation for achieving this.
+    - see Queuy for queue specific methods
+    - queues are extremely important in concurrent programming for safely transferring objects between tasks or threads.
+      When multiple threads are involved, ensuring that data is transferred and processed safely is crucial to avoid
+      issues such as data corruption, race conditions, or inconsistent states. Queues, particularly thread-safe queues,
+      serve as the foundation for achieving this.
 - `Map` has key value pairs
     - Stores key-value pairs in no particular order.
     - Provides fast insertion, deletion, and retrieval operations.
     - Does not implement Iterable, but you can itterate over the keyset and vlues
 - The use of Collection Interface to write generic and reusalbe code -> see CollectionsVsInterfaces
-  - Both Collection and Iterator offer flexibility with various container types.
-  - `Collection` is slightly preferred for cleaner code via enhanced for-loops.
-  - Decoupling through interfaces promotes maintainability and reusability.
-  - Using the Collection interface allows you to write more generic code, as you can pass around collections without knowing their specific implementation. This is a form of polymorphism and is beneficial for writing flexible and extensible code.
+    - Both Collection and Iterator offer flexibility with various container types.
+    - `Collection` is slightly preferred for cleaner code via enhanced for-loops.
+    - Decoupling through interfaces promotes maintainability and reusability.
+    - Using the Collection interface allows you to write more generic code, as you can pass around collections without
+      knowing their specific implementation. This is a form of polymorphism and is beneficial for writing flexible and
+      extensible code.
 - `Array` doesn't implement Iterable interface -> need to convert to List (or something els)
-  - An array associates numerical indexes to objects. It holds objects of a known type so
-    that you don’t have to cast the result when you’re looking up an object. It can be
-    multidimensional, and it can hold primitives. However, its size cannot be changed
-    once you create it.
+    - An array associates numerical indexes to objects. It holds objects of a known type so
+      that you don’t have to cast the result when you’re looking up an object. It can be
+      multidimensional, and it can hold primitives. However, its size cannot be changed
+      once you create it.
 - A container won’t hold primitives, but autoboxing takes
   care of translating primitives back and forth to the wrapper types held in the
   container.
 - Use an ArrayList if you’re doing a lot of random accesses, but a LinkedList if you
   will be doing a lot of insertions and removals in the middle of the list.
 - The behavior of `Queues` and `stacks` is provided via the LinkedList.
+
+#### Error Handling with exceptions
+
+- The try block contains the code that might throw an exception.
+- The catch block contains the code that is executed if an exception occurs in the try block.
+    - Takes only `one` argument
+    - If an exception is thrown, the
+      exception-handling mechanism goes hunting for the first handler with an argument that
+      matches the type of the exception
+- The finally block contains code that is executed regardless of whether an exception was thrown or not.
+- `e.printStackTrace();` You can send exceptions to the error stream -> example CreatingYourOwnExceptions
+- You can Log your exceptions via java.util.logging
+    - lots of examples of the above in CreatingYourOwnExceptions
+- `Exception specification` : public void readFile(String filePath) throws IOException
+    - the caller of readfile is obligated to
+        - `Catch` the excecption in a try catch block
+        - `Propagate` the exception -> propagate the exception up the call stack by declaring the same exception(s) in
+          its own exception specification
+        - example of both in TheExceptionSpecification
+- You can retrhow an exception in the catch block catch (Exception e) throw e;
+    - rethrown exc will contain the excpetion origin info
+    - You can also rethrow differenct exceptions
+- catch one exception and throw another, but still keep the information
+  about the originating exception -> catch lower level and add higher level exception as the `cause`
+- `Checked exceptions`: These exceptions must be either caught or declared to be thrown in the method signature. The
+  compiler checks this rule and will give an error if you don’t handle them or declare them using the throws keyword.
+  Common examples of checked exceptions are IOException, SQLException, etc. Checked exceptions are usually used for
+  recoverable conditions that client code can reasonably be expected to catch.
+
+- `Unchecked exceptions`: These exceptions are not checked at compile-time, meaning the compiler doesn't force you to
+  catch them or declare them in the method signature. Unchecked exceptions are subclasses of RuntimeException, and
+  include exceptions like ArithmeticException, NullPointerException, ArrayIndexOutOfBoundsException, etc. Unchecked
+  exceptions usually represent programming errors and it's assumed that the application cannot be expected to recover
+  from them.
+
+    - RuntimeException is itself a subclass of Exception. However, the Java language specification treats any exceptions
+      that
+      are subclasses of RuntimeException as unchecked exceptions. This means you don’t have to explicitly handle them,
+      though
+      it's often a good practice to do so, especially when you can take specific actions based on the exception.
 
 ## Overview Most used Collections and Maps:
 
@@ -251,6 +296,7 @@ extensibility in code. Here are a few scenarios where accepting interfaces as ar
         Suitable for scenarios that require both key-value lookups and maintenance of insertion order
 
 ## EXTRA info about how queues facilitate safe object transfer in concurrent environments:
+
 Here's a breakdown of how queues facilitate safe object transfer in concurrent environments:
 
     - `Producer-Consumer Pattern`: One of the most common use cases for queues in concurrent programming is the Producer-Consumer pattern. Producers are tasks that generate data or results, and consumers are tasks that process this data. A queue serves as the buffer for holding this data in between. The producer adds elements to the queue, and the consumer takes elements from the queue for processing.
