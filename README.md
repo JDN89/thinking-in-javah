@@ -214,8 +214,15 @@ extensibility in code. Here are a few scenarios where accepting interfaces as ar
 - You can retrhow an exception in the catch block catch (Exception e) throw e;
     - rethrown exc will contain the excpetion origin info
     - You can also rethrow differenct exceptions
-- catch one exception and throw another, but still keep the information
-  about the originating exception -> catch lower level and add higher level exception as the `cause`
+    - catch one exception and throw another, but still keep the information
+        about the originating exception -> catch lower level and add higher level exception as the `cause`
+- `finally` : executes everytime.
+  - Java has garbage collection so why use finally?
+    - `Logging`
+    - `Cleanup`: 
+      - close resources like files, network connections, or database connections.
+    - `Restoring State`: If a piece of code changes some global state
+    - `Unlocking`: In concurrent programming, you might use locks to protect shared resources.
 - `Checked exceptions`: These exceptions must be either caught or declared to be thrown in the method signature. The
   compiler checks this rule and will give an error if you don’t handle them or declare them using the throws keyword.
   Common examples of checked exceptions are IOException, SQLException, etc. Checked exceptions are usually used for
@@ -226,12 +233,9 @@ extensibility in code. Here are a few scenarios where accepting interfaces as ar
   include exceptions like ArithmeticException, NullPointerException, ArrayIndexOutOfBoundsException, etc. Unchecked
   exceptions usually represent programming errors and it's assumed that the application cannot be expected to recover
   from them.
-
-    - RuntimeException is itself a subclass of Exception. However, the Java language specification treats any exceptions
-      that
-      are subclasses of RuntimeException as unchecked exceptions. This means you don’t have to explicitly handle them,
-      though
-      it's often a good practice to do so, especially when you can take specific actions based on the exception.
+- RuntimeException is itself a subclass of Exception. However, the Java language specification treats any exceptions
+  that are subclasses of RuntimeException as unchecked exceptions. This means you don’t have to explicitly handle them,
+  though it's often a good practice to do so, especially when you can take specific actions based on the exception.
 
 ## Overview Most used Collections and Maps:
 
