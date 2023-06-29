@@ -1,5 +1,10 @@
 # Thinking in Java - Bruce Eckel
 
+## REVIEW:
+- functional -> defineer interface en pas het toe
+- LinkedList vs ArrayList wat is het verschil? hoe itereer je over beiden?
+- Checked exceptions vs unchecked exceptions
+
 ## Reusing Classes
 
 - adding Main to a class allows easy testing!
