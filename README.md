@@ -126,7 +126,7 @@ extensibility in code. Here are a few scenarios where accepting interfaces as ar
  
     Polymorphism and abstraction: Accepting interfaces as arguments promotes polymorphism and abstraction in your code. By relying on interfaces rather than concrete implementations, you allow for a wider range of objects to be passed as arguments, as long as they conform to the interface contract. This enhances code reusability and maintainability.
 
-#### Inner classes
+## Inner classes
 
 - The inner class can access both the instance variables and the methods of the enclosing class as if they were its own.
   This includes private members of the enclosing class, which are normally not accessible to other classes.
@@ -147,7 +147,7 @@ extensibility in code. Here are a few scenarios where accepting interfaces as ar
     - You can’t access a non-static outer-class object from an object of a nested class.
     - A nested class inside an interface is automatically public and static
 
-#### Holding your objects
+## Holding your objects
 
 - holding your objects or holding references to your objects via:  arrays, ArrayList, LinkedList, and HashMap.
 - With `Generics` you’re prevented, at compile time, from putting the
@@ -198,7 +198,7 @@ extensibility in code. Here are a few scenarios where accepting interfaces as ar
   will be doing a lot of insertions and removals in the middle of the list.
 - The behavior of `Queues` and `stacks` is provided via the LinkedList.
 
-#### Error Handling with exceptions
+## Error Handling with exceptions
 
 - The try block contains the code that might throw an exception.
 - The catch block contains the code that is executed if an exception occurs in the try block.
@@ -242,6 +242,22 @@ extensibility in code. Here are a few scenarios where accepting interfaces as ar
   that are subclasses of RuntimeException as unchecked exceptions. This means you don’t have to explicitly handle them,
   though it's often a good practice to do so, especially when you can take specific actions based on the exception.
 
+## Strings
+
+- Objects of String class are immutable 
+ - bestaande String aanpassen is nieuw String object aanmaken -> referen naar dit object en dan wordt oud object opgekuist door garbage collecter 
+   - zie StringsAreImmutable
+- String vs StringBuilder:
+  - `String`: Should be used when you are dealing with string constants or when you don't need to perform repeated modifications to strings.
+  - `StringBuilder`: Should be used when you need to construct or modify strings repeatedly, especially in loops or when performing concatenation many times.
+  - Performance
+    -    String: Concatenating or modifying strings using the String class can be inefficient, especially in loops, because a new object is created every time the string is modified.
+         StringBuilder: Operations like concatenation are much faster with StringBuilder because it modifies the object's content in-place without creating new objects. This makes StringBuilder preferable when you need to perform repeated modifications to strings. 
+  - Uninteded Recursion:
+  -  In Java, when working with strings, it's possible to accidentally cause unintended recursion if a method calls itself either directly or indirectly through a series of other method calls, without a proper termination condition.
+- String operations page 361: maybe give examples in Main class tijdens bespreking 
+- You can Format your output: see formatting output
+  - 
 ## Overview Most used Collections and Maps:
 
     ArrayList:
