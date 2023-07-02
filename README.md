@@ -1,9 +1,14 @@
 # Thinking in Java - Bruce Eckel
 
 ## REVIEW:
+
 - functional -> defineer interface en pas het toe
 - LinkedList vs ArrayList wat is het verschil? hoe itereer je over beiden?
 - Checked exceptions vs unchecked exceptions
+- polymorphism: Write methods that implement the interface instead of being tied to a specific implementation
+    - `List<Apple> apples = new LinkedList<Apple>()`
+    - compile time -> method overloading
+    - run time : interfaces and inheritance method overriding
 
 ## Reusing Classes
 
@@ -220,14 +225,14 @@ extensibility in code. Here are a few scenarios where accepting interfaces as ar
     - rethrown exc will contain the excpetion origin info
     - You can also rethrow differenct exceptions
     - catch one exception and throw another, but still keep the information
-        about the originating exception -> catch lower level and add higher level exception as the `cause`
+      about the originating exception -> catch lower level and add higher level exception as the `cause`
 - `finally` : executes everytime.
-  - Java has garbage collection so why use finally?
-    - `Logging`
-    - `Cleanup`: 
-      - close resources like files, network connections, or database connections.
-    - `Restoring State`: If a piece of code changes some global state
-    - `Unlocking`: In concurrent programming, you might use locks to protect shared resources.
+    - Java has garbage collection so why use finally?
+        - `Logging`
+        - `Cleanup`:
+            - close resources like files, network connections, or database connections.
+        - `Restoring State`: If a piece of code changes some global state
+        - `Unlocking`: In concurrent programming, you might use locks to protect shared resources.
 - `Checked exceptions`: These exceptions must be either caught or declared to be thrown in the method signature. The
   compiler checks this rule and will give an error if you don’t handle them or declare them using the throws keyword.
   Common examples of checked exceptions are IOException, SQLException, etc. Checked exceptions are usually used for
@@ -244,20 +249,44 @@ extensibility in code. Here are a few scenarios where accepting interfaces as ar
 
 ## Strings
 
-- Objects of String class are immutable 
- - bestaande String aanpassen is nieuw String object aanmaken -> referen naar dit object en dan wordt oud object opgekuist door garbage collecter 
-   - zie StringsAreImmutable
+- Objects of String class are immutable
+- bestaande String aanpassen is nieuw String object aanmaken -> referen naar dit object en dan wordt oud object
+  opgekuist door garbage collecter
+    - zie StringsAreImmutable
 - String vs StringBuilder:
-  - `String`: Should be used when you are dealing with string constants or when you don't need to perform repeated modifications to strings.
-  - `StringBuilder`: Should be used when you need to construct or modify strings repeatedly, especially in loops or when performing concatenation many times.
-  - Performance
-    -    String: Concatenating or modifying strings using the String class can be inefficient, especially in loops, because a new object is created every time the string is modified.
-         StringBuilder: Operations like concatenation are much faster with StringBuilder because it modifies the object's content in-place without creating new objects. This makes StringBuilder preferable when you need to perform repeated modifications to strings. 
-  - Uninteded Recursion:
-  -  In Java, when working with strings, it's possible to accidentally cause unintended recursion if a method calls itself either directly or indirectly through a series of other method calls, without a proper termination condition.
-- String operations page 361: maybe give examples in Main class tijdens bespreking 
+    - `String`: Should be used when you are dealing with string constants or when you don't need to perform repeated
+      modifications to strings.
+    - `StringBuilder`: Should be used when you need to construct or modify strings repeatedly, especially in loops or
+      when performing concatenation many times.
+    - Performance
+        - String: Concatenating or modifying strings using the String class can be inefficient, especially in loops,
+          because a new object is created every time the string is modified.
+          StringBuilder: Operations like concatenation are much faster with StringBuilder because it modifies the
+          object's content in-place without creating new objects. This makes StringBuilder preferable when you need to
+          perform repeated modifications to strings.
+    - Uninteded Recursion:
+    - In Java, when working with strings, it's possible to accidentally cause unintended recursion if a method calls
+      itself either directly or indirectly through a series of other method calls, without a proper termination
+      condition.
+- String operations page 361: maybe give examples in Main class tijdens bespreking
 - You can Format your output: see formatting output
-  - 
+    - Formatter util class: % format specifiers
+    - page 366 for a list of formatting conversions ex:
+        - f:   Floating point (as decimal)
+- Regular expression and string split -> split String around matches of the given regular expression.
+    - split( ) divides an input string into an array of String objects, delimited by the regular
+      expression.
+        - Example: RegularExpressionStringSplit
+        - page 372 for regular expressions table
+- regular expressions are especially useful to replace text -> replaceAll()
+    - Example in RegularExpressionStringSplit
+- 'Pattern' and 'Matcher'
+- You can scan input or txt files,... for regex expressions -> RegexAndIo good example
+    - `Scanner` scanner = new Scanner(input)
+    - `String` pattern = regex
+    - while scanner hasnext pattern
+    - `Matchresult` match = scanner.match()
+
 ## Overview Most used Collections and Maps:
 
     ArrayList:
