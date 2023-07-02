@@ -249,6 +249,8 @@ extensibility in code. Here are a few scenarios where accepting interfaces as ar
 
 ## Strings
 
+show text blocks and how it has changed during java 8
+
 - Objects of String class are immutable
 - bestaande String aanpassen is nieuw String object aanmaken -> referen naar dit object en dan wordt oud object
   opgekuist door garbage collecter
@@ -286,6 +288,11 @@ extensibility in code. Here are a few scenarios where accepting interfaces as ar
     - `String` pattern = regex
     - while scanner hasnext pattern
     - `Matchresult` match = scanner.match()
+
+## Type Information:
+- Enhanced instanceof with Pattern Matching (Java 16 onwards):
+  - Java 16 introduced a new feature called "Pattern Matching for instanceof". This allows you to not only check the type but also declare a variable in the same expression. This can reduce verbosity and make the code cleaner.
+  - 
 
 ## Overview Most used Collections and Maps:
 
