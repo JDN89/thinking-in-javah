@@ -266,7 +266,7 @@ show text blocks and how it has changed during java 8
           StringBuilder: Operations like concatenation are much faster with StringBuilder because it modifies the
           object's content in-place without creating new objects. This makes StringBuilder preferable when you need to
           perform repeated modifications to strings.
-    - Uninteded Recursion:
+    - Uninteded Recursion ZOEK NAAR EEN GEPAST VOORBEELDJJ:
     - In Java, when working with strings, it's possible to accidentally cause unintended recursion if a method calls
       itself either directly or indirectly through a series of other method calls, without a proper termination
       condition.
