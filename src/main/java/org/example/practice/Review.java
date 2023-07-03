@@ -1,9 +1,21 @@
 package org.example.practice;
 
+import java.lang.reflect.Method;
+
 public class Review {
 
     public static void main(String[] args) {
+/*
+        String s = "hello";
+        Class<?> clazz = s.getClass();
+        System.out.println("Class name: " + clazz.getName());
+*/
 
+        Class<?> clazz = String.class;
+        Method[] methods = clazz.getMethods();
+        for (Method method : methods) {
+            System.out.println(method.getName());
+        }
     }
 }
 

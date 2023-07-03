@@ -9,6 +9,14 @@
     - `List<Apple> apples = new LinkedList<Apple>()`
     - compile time -> method overloading
     - run time : interfaces and inheritance method overriding
+- Dynamic Binding (Late Binding): The association of method call to the method body happens at runtime.
+    - When your program runs new objects are created by the use and it's only when the object is created that you can
+      infer the type of the object at RUNTIME (when the program is running!!)
+    - At compile time you don't know yet what kind of object gets made, only when you run the program!!
+    - at compile time you have the reference type which might be a super class or interface but not the actual object it
+      referes to
+    - Yes, it does involve runtime type identification. The Java VM looks up the appropriate method to call based on the
+      object's type.
 
 ## Reusing Classes
 
@@ -97,7 +105,7 @@ could forget that there are derived classes, and write your code to talk only to
     - Providing common setup logic
     - Interacting with abstract methods:
 
-#### Interfaces
+## Interfaces
 
 - can contain fields but they are static and final
 - methods without bodies
@@ -290,9 +298,21 @@ show text blocks and how it has changed during java 8
     - `Matchresult` match = scanner.match()
 
 ## Type Information:
+
+chapter overview:
+
+all the things below are to show how the JVM finds the right object at runtime.
+
 - Enhanced instanceof with Pattern Matching (Java 16 onwards):
-  - Java 16 introduced a new feature called "Pattern Matching for instanceof". This allows you to not only check the type but also declare a variable in the same expression. This can reduce verbosity and make the code cleaner.
-  - 
+    - Java 16 introduced a new feature called "Pattern Matching for instanceof". This allows you to not only check the
+      type but also declare a variable in the same expression. This can reduce verbosity and make the code cleaner.
+- Anytime you want to use type information at run time, you must first get a reference to the
+  appropriate Class object.
+    - explanation of class object below:
+- Class literal:
+    - `This is used to pass type information around without the overhead of creating individual objects.`
+        - https://stackoverflow.com/questions/2160788/what-is-a-class-literal-in-java
+        - show real life examples of how to use class literals ASK CHAT GPT!! explains a lot
 
 ## Overview Most used Collections and Maps:
 
@@ -369,3 +389,23 @@ Here's a breakdown of how queues facilitate safe object transfer in concurrent e
     `Flow Control`: Queues can help in controlling the flow of data between threads. For instance, if the producer is generating data faster than the consumer can process, the queue will start to fill up. You can set a maximum size for the queue, and once it's full, the producer will be forced to wait. This can help in preventing resource exhaustion and ensuring a balanced workload.
 
     `Ordering`: In some cases, the order of processing matters. Queues inherently maintain the order of elements as they are added and removed, ensuring that elements are processed in the order they were added (FIFO - First In First Out).
+
+## Class object
+
+    - Class Object: In Java, for every type (class or interface), there is a unique instance of java.lang.Class that represents that type. This Class instance holds metadata about the type such as its name, methods, fields, constructors, and more. This object is essential for Java's RTTI because it allows you to inspect and interact with class information at runtime.
+
+    - Creation of Regular Objects: When you create an instance of your class (a "regular" object), it's actually created through the associated Class object. This means the JVM uses the Class object's information to allocate memory and initialize the object.
+
+    - Class Files: When you compile a Java class, a .class file is created. This file contains bytecode and metadata for that class. The Class object is created based on this .class file.
+
+    - Class Loaders: In Java, class loaders are responsible for loading classes into the JVM at runtime. There is a hierarchy of class loaders, with the primordial (or bootstrap) class loader at the top. The bootstrap class loader loads the core Java classes. You can also have custom class loaders (for example, to load classes over a network or from unconventional sources).
+
+    - Dynamic Class Loading: Java classes are loaded dynamically, which means they are not loaded all at once when the application starts, but rather as they are needed. This happens when the program makes its first reference to a static member of the class. Constructors are considered static members for this purpose (even though they don’t have the static keyword). This dynamic behavior enables more flexible and extensible programs compared to statically loaded languages.
+
+    - RTTI Usage: RTTI in Java is not just about inspecting class information. It's also used internally by the JVM, for example, during type casting to ensure that the cast is valid.
+
+    - Differences with Statically Loaded Languages: Unlike languages like C++ where typically the whole program is loaded into memory before execution begins, Java's approach of loading classes dynamically allows for more adaptable and scalable applications, especially in environments where classes might be remotely sourced or loaded in unconventional ways.
+
+In summary, the Class object is central to how Java handles RTTI, and it's intimately tied to the dynamic loading of
+classes through the class loader subsystem. This combination enables powerful runtime behaviors including reflection,
+dynamic extension, and type safety.
