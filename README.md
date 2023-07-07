@@ -306,13 +306,41 @@ all the things below are to show how the JVM finds the right object at runtime.
 - Enhanced instanceof with Pattern Matching (Java 16 onwards):
     - Java 16 introduced a new feature called "Pattern Matching for instanceof". This allows you to not only check the
       type but also declare a variable in the same expression. This can reduce verbosity and make the code cleaner.
-- Anytime you want to use type information at run time, you must first get a reference to the
-  appropriate Class object.
-    - explanation of class object below:
+- Class object:
+    - Contains type information of the class
+    - loaded when the first reference to a static member of the class is made - ctor is static
+    - Anytime you want to use type information at run time, you must first get a reference to the
+      appropriate Class object.
+        - EXAMPLE InstancethisBiatch!!
+            - Animal extends cats and dogs -> put animal of type Animal in array
+                - you can only call the overriden methods and not the class specicif methdos
+                - because upcasting from Class object to class specific object stops at Animal
+            -
 - Class literal:
+    - a class literal is a reference to the Class object that represents a specific type (i.e., a class, an interface,
+      an array, a primitive, or void). A class literal is written as TypeName.class.
     - `This is used to pass type information around without the overhead of creating individual objects.`
         - https://stackoverflow.com/questions/2160788/what-is-a-class-literal-in-java
         - show real life examples of how to use class literals ASK CHAT GPT!! explains a lot
+        -     `private static Logger log = Logger.getLogger(YourClassHere.class);`
+        - this is a line where we're initialising a logging framework
+        - The getLogger() method requires a class literal so it knows what it's logging (i.e. the current object's
+          class).
+            - getting a reference via .class doesn't initialize the class -> handy to pass type information about a
+              class
+              without having to initialize it
+            - However, Class.forName( ) initializes the class immediately in order to
+              produce the Class reference
+- Generics
+    - The reason for adding the generic syntax to Class references is only to provide compile-time
+      type checking, so that if you do something wrong you find out about it a little sooner
+    - Bounded Type Parameters: You can restrict the types that can be used as type arguments in a parameterized type.
+      For example:
+        - public class Box<T extends Number> {
+        - T can be any type that extends Number, such as Integer, Double, Float, etc.
+    - Code Reusability: Generics promote code reusability as you can write a method or class which can work with
+      different types of data.
+    -
 
 ## Overview Most used Collections and Maps:
 
