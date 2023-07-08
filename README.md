@@ -299,6 +299,12 @@ show text blocks and how it has changed during java 8
 
 ## Type Information:
 
+To summarize, .class files are created at compile-time, and RTTI and Reflection are techniques used at runtime to
+interact with these loaded classes.
+
+- Java's compile-time process involves converting .java source code into bytecode (.class files). The compiler doesn't
+  examine .class files during the compilation. Rather, it produces these .class files.
+
 chapter overview:
 
 all the things below are to show how the JVM finds the right object at runtime.
@@ -343,8 +349,8 @@ all the things below are to show how the JVM finds the right object at runtime.
 - Instanceof or isInstance vs ==
     - instanceOf or isInstance: are you this class or a class derived from this class
     - == : not concerned with inheritance -> exact type, or it isn't
-- For RTTI (detecting the type of a class) the type of the class must be known at compile time in 
-  - what if you don't know the type at compile time? REFLECTION -> the .class is opened at runtime
+- For RTTI (detecting the type of a class) the type of the class must be known at compile time in
+    - what if you don't know the type at compile time? REFLECTION -> the .class is opened at runtime
 
 ## Overview Most used Collections and Maps:
 
