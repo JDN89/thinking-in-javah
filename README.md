@@ -340,7 +340,11 @@ all the things below are to show how the JVM finds the right object at runtime.
         - T can be any type that extends Number, such as Integer, Double, Float, etc.
     - Code Reusability: Generics promote code reusability as you can write a method or class which can work with
       different types of data.
-    -
+- Instanceof or isInstance vs ==
+    - instanceOf or isInstance: are you this class or a class derived from this class
+    - == : not concerned with inheritance -> exact type, or it isn't
+- For RTTI (detecting the type of a class) the type of the class must be known at compile time in 
+  - what if you don't know the type at compile time? REFLECTION -> the .class is opened at runtime
 
 ## Overview Most used Collections and Maps:
 

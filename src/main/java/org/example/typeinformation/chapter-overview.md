@@ -38,3 +38,18 @@
 
 - The instanceof Keyword: The chapter discusses using instanceof for type comparisons and how it can be employed in
   program control flow.
+
+- Java's compile-time process involves converting .java source code into bytecode (.class files). The compiler doesn't
+  examine .class files during the compilation. Rather, it produces these .class files.
+
+During runtime, the JVM loads these .class files, and it's at this point RTTI and Reflection come into play.
+
+    RTTI: The JVM uses RTTI to determine the type of an object at runtime. For instance, when you use the instanceof keyword, it's RTTI that checks if an object is of a particular type.
+
+    Reflection: It's a more powerful feature, allowing the inspection and manipulation of classes, interfaces, fields, and methods at runtime. This includes instantiating new objects, invoking methods, and accessing/changing field values.
+
+Neither RTTI nor Reflection "opens and examines" .class files. Instead, they both rely on the JVM's ability to access
+information about the loaded classes at runtime.
+
+To summarize, .class files are created at compile-time, and RTTI and Reflection are techniques used at runtime to
+interact with these loaded classes. 
