@@ -3,7 +3,7 @@
 ## REVIEW:
 
 - functional -> defineer interface en pas het toe
-- LinkedList vs ArrayList wat is het verschil? hoe itereer je over beiden?
+- LinkedList vs ArrayList wat is het verschil? 
 - Checked exceptions vs unchecked exceptions
 - polymorphism: Write methods that implement the interface instead of being tied to a specific implementation
     - `List<Apple> apples = new LinkedList<Apple>()`
@@ -114,7 +114,8 @@ could forget that there are derived classes, and write your code to talk only to
   into a new interface. This allows you to define more specialized interfaces that inherit and extend the behavior of
   existing interfaces. It promotes code reuse, modularity, and flexibility in designing your software components.
     - Multi inheritance chapter had some weird examples where you use Interface as an argument and the right method gets
-      called
+      called -> don;t know why i thought this was confusing -> we pass interfaces as arguments all the time and call the methods on those interfaces
+      - via ctor
     - I added a less confusing example because I don't think that the example in the book gets used in real life? ask PF
     - `pg 230, ...`
 - example of StrategyPattern
