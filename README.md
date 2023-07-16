@@ -3,7 +3,7 @@
 ## REVIEW:
 
 - functional -> defineer interface en pas het toe
-- LinkedList vs ArrayList wat is het verschil? 
+- LinkedList vs ArrayList wat is het verschil?
 - Checked exceptions vs unchecked exceptions
 - polymorphism: Write methods that implement the interface instead of being tied to a specific implementation
     - `List<Apple> apples = new LinkedList<Apple>()`
@@ -114,8 +114,9 @@ could forget that there are derived classes, and write your code to talk only to
   into a new interface. This allows you to define more specialized interfaces that inherit and extend the behavior of
   existing interfaces. It promotes code reuse, modularity, and flexibility in designing your software components.
     - Multi inheritance chapter had some weird examples where you use Interface as an argument and the right method gets
-      called -> don;t know why i thought this was confusing -> we pass interfaces as arguments all the time and call the methods on those interfaces
-      - via ctor
+      called -> don;t know why i thought this was confusing -> we pass interfaces as arguments all the time and call the
+      methods on those interfaces
+        - via ctor
     - I added a less confusing example because I don't think that the example in the book gets used in real life? ask PF
     - `pg 230, ...`
 - example of StrategyPattern
@@ -352,24 +353,48 @@ all the things below are to show how the JVM finds the right object at runtime.
     - == : not concerned with inheritance -> exact type, or it isn't
 - For RTTI (detecting the type of a class) the type of the class must be known at compile time in
     - what if you don't know the type at compile time? REFLECTION -> the .class is opened at runtime
-  
+
 ## GENERICS
 
-- Java generics do not support primitive types such as int, char, or boolean. Instead, their wrapper classes (Integer, Character, Boolean, etc.) must be used. This is considered one of the limitations of Java generics.
-  - Autoboxing is the automatic conversion that the Java compiler makes between the primitive types and their corresponding object wrapper classes. For example, converting an int to an Integer automatically when an object is required.
-  - Unboxing is the reverse process of autoboxing. Automatically converting an object of a wrapper type to its corresponding primitive type. For example, converting an Integer to an int.
+- Java generics do not support primitive types such as int, char, or boolean. Instead, their wrapper classes (Integer,
+  Character, Boolean, etc.) must be used. This is considered one of the limitations of Java generics.
+    - Autoboxing is the automatic conversion that the Java compiler makes between the primitive types and their
+      corresponding object wrapper classes. For example, converting an int to an Integer automatically when an object is
+      required.
+    - Unboxing is the reverse process of autoboxing. Automatically converting an object of a wrapper type to its
+      corresponding primitive type. For example, converting an Integer to an int.
 - public class Box<T extends Number>
-  - `bounded` type
-- Lower Bounded Wildcards: To declare a lower-bounded wildcard, you use the wildcard character ('?'), followed by the super keyword, followed by its lower bound: ? super A.
-- Upper Bounded Wildcards: To declare an upper-bounded wildcard, you use the wildcard character ('?'), followed by the extends keyword, followed by its upper bound.
+    - `bounded` type
+- Lower Bounded Wildcards: To declare a lower-bounded wildcard, you use the wildcard character ('?'), followed by the
+  super keyword, followed by its lower bound: ? super A.
+- Upper Bounded Wildcards: To declare an upper-bounded wildcard, you use the wildcard character ('?'), followed by the
+  extends keyword, followed by its upper bound.
 - ERASURE:
-  - Generic types cannot be used in operations that explicitly
-    refer to runtime types, such as casts, instanceof operations, and new expressions. Because
-    all the type information about the parameters is lost, whenever you’re writing generic code
-    you must constantly be reminding yourself that it only appears that you have type
-    information about a parameter
-  - Type Erasure: Type erasure is a compromise in the implementation of Java generics. It was necessary to maintain backward compatibility because generics were not a part of Java from the beginning. If generics were part of Java 1.0, they would have used reification to retain the type parameters as first-class entities. But, due to type erasure, generics are treated as second-class types that cannot be used in some important contexts. Every generic type in the program is erased by replacing it with a non-generic upper bound.
-  - 
+    - Generic types cannot be used in operations that explicitly
+      refer to runtime types, such as casts, instanceof operations, and new expressions. Because
+      all the type information about the parameters is lost, whenever you’re writing generic code
+      you must constantly be reminding yourself that it only appears that you have type
+      information about a parameter
+    - Type Erasure: Type erasure is a compromise in the implementation of Java generics. It was necessary to maintain
+      backward compatibility because generics were not a part of Java from the beginning. If generics were part of Java
+      1.0, they would have used reification to retain the type parameters as first-class entities. But, due to type
+      erasure, generics are treated as second-class types that cannot be used in some important contexts. Every generic
+      type in the program is erased by replacing it with a non-generic upper bound.
+      -The issue here is that when you use an upper-bounded wildcard (List<? extends Fruit>), you can't put anything
+      into the collection (with the exception of null). This is because Java can't guarantee what the actual type of the
+      elements in the collection is.
+        - If you need to get values out of a structure and you don't know its exact type parameter, use extends (
+          producer).
+        - If you need to put values into a structure and you don't know its exact type parameter, use super (consumer).
+        - If you need to do both things, don't use wildcards.
+        - So, if you want to add elements to your list, you should either declare it with a specific type, or use a
+          lower-bounded wildcard (List<? super Apple>), which allows you to add Apple and its subtypes to the list.
+    - No, you won't have the same issues with a list of String because String is a specific type, not a generic
+      placeholder like T.
+    - In the case of String, the type is known at compile-time and does not get erased. Therefore, you can create a
+      List<String> and add new String objects to it without any problems.
+        - The problem arises when you use a type parameter T because due to type erasure, the JVM doesn't know what T is
+          at runtime and hence can't instantiate it.
 
 ## Overview Most used Collections and Maps:
 
